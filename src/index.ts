@@ -50,7 +50,7 @@ function vitePluginWasmPack(
     const wasmFile = wasmFilename(cratePath);
     wasmMap.set(wasmFile, {
       path: path.join(cratePath, pkg, wasmFile),
-      isNodeModule: false
+      isNodeModule: false, // because it will be copied anyhow.
     });
   });
   // 'my_crate_bg.wasm': { path: 'node_modules/my_crate/my_crate_bg.wasm', isNodeModule: true }

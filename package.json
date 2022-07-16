@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-wasm-pack",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Vite plugin for rust using wasm-pack 🦀",
   "main": "dist/index.js",
   "module": "esm/index.js",
@@ -26,10 +26,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nshen/vite-plugin-wasm-pack"
+    "url": "git+https://github.com/safai/vite-plugin-wasm-pack"
   },
   "bugs": {
-    "url": "https://github.com/nshen/vite-plugin-wasm-pack/issues"
+    "url": "https://github.com/safai/vite-plugin-wasm-pack/issues"
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.9",
