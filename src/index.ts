@@ -131,7 +131,26 @@ function vitePluginWasmPack(
               console.log(`${chalk.green(node_path)} is a symbolic link, skipping copy`);
             }
           } catch (error) {
-            this.error(`copy crates failed for ${cratePath}`);
+            this.error(`copy crates failed for ${cratePath} : ${error}`);
+          }
+
+          // this is a temporary hack to make wasm-pack work with typescript and vite
+          // we need to specify type = 'module' in externally referenced wasms to avoid
+          // the require error, until it is fixed in wasm-pack
+          try {
+            console.log(`current dir: ${chalk.green(process.cwd())}`);
+            const pkg_json = path.join('./', node_path, 'package.json');
+            console.log(`package.json: ${chalk.green(pkg_json)}`);
+            const pkg_json_content = JSON.parse(await fs.promises.readFile(pkg_json, { encoding: 'utf-8' }));
+
+            pkg_json_content.main = 'index.js';
+            pkg_json_content.type = 'module';
+            await fs.writeFile(
+              path.join(node_path, 'package.json'),
+              JSON.stringify(pkg_json_content, null, 2)
+            );
+          } catch(error) {
+            console.error(`write package.json failed for ${chalk.yellow(node_path)}: ${chalk.red(error)}`);
           }
         }
         // replace default load path with '/assets/xxx.wasm'
