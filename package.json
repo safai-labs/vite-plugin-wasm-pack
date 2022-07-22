@@ -22,14 +22,14 @@
     "vite",
     "cargo"
   ],
-  "author": "nshen <nshen121@gmail.com>",
+  "author": "Ahmed Masud<ahmed.masud@saf.ai>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nshen/vite-plugin-wasm-pack"
+    "url": "git+https://github.com/safai-labs/vite-plugin-wasm-pack"
   },
   "bugs": {
-    "url": "https://github.com/nshen/vite-plugin-wasm-pack/issues"
+    "url": "https://github.com/safai-labs/vite-plugin-wasm-pack/issues"
   },
   "devDependencies": {
     "@tsconfig/node12": "^1.0.11",
