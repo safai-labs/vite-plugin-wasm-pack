@@ -1,5 +1,4 @@
 node_modules
-esm
 yarn.lock
 package-lock.json
 example/my-crate/targetpackage-lock.json
