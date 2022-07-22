@@ -139,11 +139,11 @@ function vitePluginWasmPack(
           // the require error, until it is fixed in wasm-pack
           try {
             console.log(`current dir: ${chalk.green(process.cwd())}`);
-            const pkg_json = path.join('./', node_path, 'package.json');
+            const pkg_json = path.join(node_path, 'package.json');
             console.log(`package.json: ${chalk.green(pkg_json)}`);
             const pkg_json_content = JSON.parse(await fs.promises.readFile(pkg_json, { encoding: 'utf-8' }));
 
-            pkg_json_content.main = 'index.js';
+            // pkg_json_content.main = 'index.js';
             pkg_json_content.type = 'module';
             await fs.writeFile(
               path.join(node_path, 'package.json'),
@@ -199,6 +199,7 @@ function vitePluginWasmPack(
             );
             const entry = wasmMap.get(basename);
             if (basename.endsWith('.wasm') && entry) {
+              console.log(`sending ${chalk.green(basename)}`);
               res.writeHead(200, { 'Content-Type': 'application/wasm' });
               fs.createReadStream(entry.path).pipe(res);
             } else {
